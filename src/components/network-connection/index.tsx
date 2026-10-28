@@ -12,7 +12,6 @@ export default function NetworkConnection() {
       setIsOnline(true);
       setVisible(true);
     };
-    // when offline, show until user closes
     const handleOffline = () => {
       setIsOnline(false);
       setVisible(true);
@@ -30,7 +29,6 @@ export default function NetworkConnection() {
   useEffect(() => {
     if (!isOnline || !visible) return;
 
-    // auto-hide online popup after 2s
     const timer = setTimeout(() => {
       setVisible(false);
     }, 2000);

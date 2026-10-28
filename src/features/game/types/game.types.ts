@@ -32,3 +32,5 @@ export interface GameStatus {
   label: string;
   tone: StatusTone;
 }
+
+export type GameMode = "pvp" | "cpu";

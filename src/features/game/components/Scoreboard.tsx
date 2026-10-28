@@ -1,16 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
 import GlassCard from "../../../components/common/GlassCard";
-import type { Scores } from "../types/game.types";
+import type { GameMode, Scores } from "../types/game.types";
 
 interface Props {
   scores: Scores;
+  mode: GameMode;
   onReset: () => void;
 }
 
-export default function Scoreboard({ scores, onReset }: Props) {
+export default function Scoreboard({ scores, mode, onReset }: Props) {
   const tiles = [
-    { label: "X wins", value: scores.x, color: "game.x" },
-    { label: "O wins", value: scores.o, color: "game.o" },
+    { label: mode === "cpu" ? "You (X)" : "X wins", value: scores.x, color: "game.x" },
+    { label: mode === "cpu" ? "Computer (O)" : "O wins", value: scores.o, color: "game.o" },
     { label: "Draws", value: scores.draws, color: "text.primary" },
   ];
   const hasScores = scores.x + scores.o + scores.draws > 0;

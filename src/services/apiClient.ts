@@ -13,7 +13,6 @@ const http = axios.create({
   headers,
 });
 
-// show the global loader while any request is in flight
 http.interceptors.request.use((config) => {
   store.dispatch(showLoader());
   return config;

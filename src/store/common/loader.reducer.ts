@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface LoaderState {
-  loadingCount: number; // number of requests in flight
+  loadingCount: number;
   isVisible: boolean;
 }
 

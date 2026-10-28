@@ -16,8 +16,6 @@ interface Props {
   history: MoveEntry[];
 }
 
-// table box: desktop fills the card down to the game card's bottom edge;
-// stacked (mobile) layout uses a fixed range, ~5 rows before it scrolls
 const MIN_HEIGHT = 236;
 const MAX_HEIGHT = 280;
 const MIN_WIDTH = 320;
@@ -25,7 +23,6 @@ const MIN_WIDTH = 320;
 export default function MoveHistory({ history }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // keep the latest move in view
   useEffect(() => {
     const el = scrollRef.current;
     if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });

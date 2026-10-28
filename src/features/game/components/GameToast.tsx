@@ -2,25 +2,27 @@ import { Box, IconButton, Snackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import Mark from "../../../components/common/Mark";
-import type { GameToast as GameToastState } from "../types/game.types";
+import type { GameMode, GameToast as GameToastState } from "../types/game.types";
 
 interface Props {
   toast: GameToastState;
+  mode: GameMode;
   onClose: () => void;
 }
 
 const AUTO_HIDE = 3500;
 
 const MESSAGES = {
-  X: "Player X wins.",
-  O: "Player O wins.",
+  pvp: { X: "Player X wins.", O: "Player O wins." },
+  cpu: { X: "You win.", O: "Computer wins." },
   draw: "It's a draw.",
   reset: "Game reset successfully.",
 };
 
-export default function GameToast({ toast, onClose }: Props) {
+export default function GameToast({ toast, mode, onClose }: Props) {
   const { open, type } = toast;
   const isWin = type === "X" || type === "O";
+  const message = isWin ? MESSAGES[mode][type] : MESSAGES[type];
 
   const icon = isWin ? (
     <Mark player={type} size={16} animate={false} />
@@ -77,7 +79,7 @@ export default function GameToast({ toast, onClose }: Props) {
         >
           {icon}
         </Box>
-        {MESSAGES[type]}
+        {message}
         <IconButton
           size="small"
           aria-label="Close"

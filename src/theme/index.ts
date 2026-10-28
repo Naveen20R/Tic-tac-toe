@@ -35,7 +35,6 @@ interface CustomStyles {
   overflowAuto: CSSObject;
 }
 
-// Reusable styles :
 const flex: CSSObject = { display: "flex" };
 const justifyCenter: CSSObject = { justifyContent: "center" };
 const justifyBetween: CSSObject = { justifyContent: "space-between" };
@@ -117,7 +116,6 @@ const overflowAuto: CSSObject = {
   overflow: "auto",
 };
 
-// Compositions :
 const flexCenter: CSSObject = {
   ...flex,
   ...justifyCenter,
@@ -131,7 +129,6 @@ const flexBetween: CSSObject = {
   ...alignCenter,
 };
 
-// Button clikable animation :
 const clickable: CSSObject = {
   cursor: "pointer",
   transition: "transform 0.12s ease, background-color 0.12s ease",

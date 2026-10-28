@@ -3,6 +3,8 @@ import { useOnlineStatus } from "../../../hooks/useOnlineStatus";
 import BlinkDot from "../../../components/common/BlinkDot";
 import Logo from "../../../components/common/Logo";
 import ThemeToggle from "../../../components/common/ThemeToggle";
+import ModeToggle from "./ModeToggle";
+import type { GameMode } from "../types/game.types";
 
 function OnlineStatus() {
   const isOnline = useOnlineStatus();
@@ -31,7 +33,12 @@ function OnlineStatus() {
   );
 }
 
-export default function Header() {
+interface Props {
+  mode: GameMode;
+  onModeChange: (mode: GameMode) => void;
+}
+
+export default function Header({ mode, onModeChange }: Props) {
   return (
     <Box
       component="header"
@@ -61,6 +68,7 @@ export default function Header() {
 
       <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 1.5 }}>
         <OnlineStatus />
+        <ModeToggle mode={mode} onChange={onModeChange} />
         <ThemeToggle />
       </Box>
     </Box>

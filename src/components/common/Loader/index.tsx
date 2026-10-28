@@ -1,7 +1,6 @@
 import { Backdrop, CircularProgress } from "@mui/material";
 import { useLoaderData } from "../../../utils/storeData";
 
-// Full-screen loader driven by the store (shown while API requests are in flight)
 export default function Loader() {
   const { isVisible } = useLoaderData();
 

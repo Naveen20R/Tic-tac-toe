@@ -11,15 +11,15 @@ import { getStatus } from "../../utils/helpers";
 
 function Home() {
   const game = useTicTacToe();
-  const { result, currentPlayer } = game;
+  const { result, currentPlayer, mode, isComputerTurn } = game;
 
-  const status = getStatus(result, currentPlayer);
+  const status = getStatus(result, currentPlayer, mode);
 
   return (
     <>
       <title>Tic-Tac-Toe | A classic game of Xs and Os</title>
-      <Header />
-      <GameToast toast={game.toast} onClose={game.closeToast} />
+      <Header mode={mode} onModeChange={game.changeMode} />
+      <GameToast toast={game.toast} mode={mode} onClose={game.closeToast} />
 
       <Box
         component="main"
@@ -43,7 +43,7 @@ function Home() {
             <Board
               board={game.board}
               winningLine={result?.line ?? []}
-              disabled={result !== null}
+              disabled={result !== null || isComputerTurn}
               onCellClick={game.play}
             />
           </Box>
@@ -63,7 +63,7 @@ function Home() {
           aria-label="Game stats"
           sx={{ display: "flex", flexDirection: "column", gap: 3 }}
         >
-          <Scoreboard scores={game.scores} onReset={game.resetScores} />
+          <Scoreboard scores={game.scores} mode={mode} onReset={game.resetScores} />
           <MoveHistory history={game.history} />
         </Box>
       </Box>

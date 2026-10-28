@@ -33,7 +33,6 @@ export default function StatusChip({ label, tone }: Props) {
         border: `1px solid ${theme.palette.game.divider}`,
       })}
     >
-      {/* blink while a player's turn is in progress */}
       <BlinkDot color={dotColor} blinking={tone === "X" || tone === "O"} />
       {label}
     </Box>

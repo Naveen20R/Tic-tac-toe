@@ -3,7 +3,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { useTheme } from "@mui/material";
 import { GiTicTacToe } from "react-icons/gi";
 
-// set favicon dynamically based on the current theme color
 export default function Favicon() {
   const theme = useTheme();
   const color = theme.palette.game.x;

@@ -206,7 +206,6 @@ function NotFound() {
             </Box>
           </Box>
 
-          {/* decorative only; hidden on small screens so everything fits without scrolling */}
           <Box
             sx={{ display: { xs: "none", md: "flex" }, justifyContent: "flex-end", width: "100%" }}
           >
